@@ -1,0 +1,64 @@
+Assessing Risk for Ankylosing Spondylitis By Genetic Factors
+========================================================
+author: Adam Kehoe
+date: September 21, 2014
+
+Overview
+========================================================
+
+**What this project does:**
+
+
+This project estimates risk for a condition called
+ankylosing spondylitis (AS) using genetic data.
+
+**Why does this matter?**
+
+
+AS is a difficult disease to diagnose, and early treatment can make a dramatic difference in outcomes. Genetic screening of young people can lead to detecting and treating the disease early.
+
+**How does this work?**
+
+The application takes data on two single nucleotide polymorphisms (SNPs), as well as an estimate on the population prevalence of AS to estimate individual risk for the condition. Using the results from a recent genome wide association study, we can calculate an individual relative risk for the disease.
+
+
+About Ankylosing Spondylitis and the Study
+========================================================
+
+Ankylosing spondylitis is an inflammatory condition with a strong genetic predisposition. It disproportionately effects males. Symptomps often begin in the late 20s, and the condition can be difficult to diagnose due to its vague symptoms -- typically back pain.
+
+The study this project is based on:
+
+[Evans DM, Spencer CC, Pointon JJ, et al. Interaction between ERAP1 and HLA-B27 in ankylosing spondylitis implicates peptide handling in the mechanism for HLA-B27 in disease susceptibility. Nat Genet. 2011;43(8):761-7.](http://www.ncbi.nlm.nih.gov/pubmed/21743469)
+
+The Application: Showing risk factors
+========================================================
+
+**Inputs**
+- SNP genotype for rs31087, corresponding to the ERAP-1 gene
+- SNP genotype for rs4349859, tagging the HLAB-27 gene
+- A value for population prevalence. This is adjustable.
+
+**Outputs**
+- A probability for the condition, derived from multiplying the relative risk (roughly equivalent to the odds ratio, by the rare disease assumption) and the population prevalence.
+
+Example
+========================================================
+
+For an individual with the following characteristics
+
+
+rs30187: CC
+
+
+rs4349859: AA
+
+
+The odds ratio for ankylosing spondylitis given this combination is 72.
+
+The risk calculation yields the following for this individual:
+```{r}
+odds_ratio <- 72
+prevalence <- .005
+print(odds_ratio * prevalence)
+```
